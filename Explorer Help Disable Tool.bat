@@ -5,7 +5,7 @@ title Explorer Help Disable Tool
 rem Get administrator privileges and run as administrator if not administrator
 NET FILE 1>NUL 2>NUL
 if '%errorlevel%' == '0' (
-    goto :welcome
+    goto welcome
 ) else (
     powershell Start-Process "%0" -Verb RunAs
 )
@@ -39,7 +39,7 @@ takeown /f "C:\Windows\HelpPane.exe" > nul
 icacls "C:\Windows\HelpPane.exe" /grant "%USERNAME%:F" > nul
 
 rem Ask if you want to rename or delete
-choice /C DR /M "Do you want to delete(D) or rename(R) HelpPane? "
+choice /C DR /M "Do you want to (D)elete or (R)ename HelpPane? "
 
 rem Main processing
 if errorlevel 2 (
