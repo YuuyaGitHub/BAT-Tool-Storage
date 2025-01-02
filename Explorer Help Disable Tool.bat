@@ -2,14 +2,19 @@
 cls
 title Explorer Help Disable Tool
 
-rem Get administrator privileges and run as administrator if not administrator
+rem You will need to run this tool again after running Windows Update.
+
+rem Check for administrator privileges
+echo Checking if you have administrator privileges...
+echo.
 NET FILE 1>NUL 2>NUL
-if '%errorlevel%' == '0' (
-    goto welcome
-) else (
-    powershell Start-Process "%0" -Verb RunAs
+if '%errorlevel%' NEQ '0' (
+    echo This script requires administrator privileges. Attempting to elevate...
+    powershell -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    exit /b
 )
 
+cls
 :check
 set "file_path=C:\Windows\HelpPane.exe"
 if exist "%file_path%" (
