@@ -2,6 +2,9 @@
 cls
 title Startup Remover
 
+rem By running this, all startups will be removed.
+rem For virtual machines, do not run this after installing VMware Tools and/or VirtualBox Guest Additions; they will no longer work.
+
 rem Check if it is Running as Administrator
 NET SESSION >nul 2>&1
 if %errorLevel% == 0 (
